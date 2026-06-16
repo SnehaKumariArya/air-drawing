@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Drawing - Draw in Mid-Air</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>✏️ Air Drawing</h1>
+            <p>Draw in mid-air using your hand gestures</p>
+        </header>
+
+        <main>
+            <div class="canvas-section">
+                <div class="video-container">
+                    <img id="canvas-frame" src="" alt="Drawing Canvas" />
+                    <div id="loading" class="loading">Loading...</div>
+                </div>
+                <div class="controls-section">
+                    <div class="button-group">
+                        <button id="start-btn" class="btn btn-primary">🎥 Start Camera</button>
+                        <button id="stop-btn" class="btn btn-danger" disabled>⏹️ Stop Camera</button>
+                        <button id="clear-btn" class="btn btn-warning" disabled>🗑️ Clear Canvas</button>
+                        <button id="save-btn" class="btn btn-success" disabled>💾 Save Drawing</button>
+                    </div>
+
+                    <div class="settings-group">
+                        <div class="setting">
+                            <label for="color-select">🎨 Color:</label>
+                            <select id="color-select" disabled>
+                                <option value="red">Red</option>
+                                <option value="green">Green</option>
+                                <option value="blue" selected>Blue</option>
+                                <option value="yellow">Yellow</option>
+                                <option value="purple">Purple</option>
+                                <option value="cyan">Cyan</option>
+                                <option value="white">White</option>
+                                <option value="black">Black</option>
+                            </select>
+                        </div>
+
+                        <div class="setting">
+                            <label for="brush-size">🖌️ Brush Size:</label>
+                            <div class="slider-container">
+                                <input type="range" id="brush-size" min="1" max="20" value="3" disabled>
+                                <span id="size-value">3</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="status-section">
+                        <h3>Status</h3>
+                        <p><strong>Mode:</strong> <span id="status-mode">idle</span></p>
+                        <p><strong>Current Color:</strong> <span id="status-color">blue</span></p>
+                        <p><strong>Brush Size:</strong> <span id="status-size">3</span></p>
+                        <p><strong>FPS:</strong> <span id="status-fps">0</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <aside class="instructions">
+                <h3>📖 Instructions</h3>
+                <ul>
+                    <li><strong>Index finger up</strong> → Draw</li>
+                    <li><strong>Two+ fingers up</strong> → Erase</li>
+                    <li><strong>Closed hand</strong> → Stop drawing</li>
+                </ul>
+
+                <h3>⌨️ Controls</h3>
+                <ul>
+                    <li>Use color selector to change color</li>
+                    <li>Adjust brush size with slider</li>
+                    <li>Click "Clear Canvas" to start fresh</li>
+                    <li>Click "Save Drawing" to download</li>
+                </ul>
+
+                <h3>💡 Tips</h3>
+                <ul>
+                    <li>Good lighting improves hand detection</li>
+                    <li>Keep hand 20-40cm from camera</li>
+                    <li>Move slowly for smoother lines</li>
+                    <li>Raise fingers clearly to switch modes</li>
+                </ul>
+            </aside>
+        </main>
+
+        <footer>
+            <p>Built with Flask, OpenCV, and MediaPipe | <a href="https://github.com/SnehaKumariArya/air-drawing" target="_blank">GitHub</a></p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
